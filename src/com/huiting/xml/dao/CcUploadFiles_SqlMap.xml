@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd" >
+<sqlMap namespace="AttachInfo">
+  <typeAlias alias="ccUploadFilesDto" type="com.huiting.xml.dto.CcUploadFilesDto"/>
+  <resultMap id="ccUploadFilesMap" class="ccUploadFilesDto" >
+    	<result column="FILEID" property="fileid" jdbcType="VARCHAR" />
+		<result column="FILEGROUPID" property="filegroupid" jdbcType="VARCHAR" />
+		<result column="MODULEID" property="moduleid" jdbcType="VARCHAR" />
+		<result column="UPLOADFILENAME" property="uploadfilename" jdbcType="VARCHAR" />
+		<result column="UPLOADREALNAME" property="uploadrealname" jdbcType="VARCHAR" />
+		<result column="UPLOADCONTENTTYPE" property="uploadcontenttype" jdbcType="VARCHAR" />
+		<result column="SAVEPATH" property="savepath" jdbcType="VARCHAR" />
+		<result column="CREATETIME" property="createtime" jdbcType="TIMESTAMP" />
+		<result column="CREATEUSERCODE" property="createusercode" jdbcType="VARCHAR" />
+		<result column="REMARK" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+
+
+
+	<select id="selectbyid" resultClass="ccUploadFilesDto" parameterClass="java.lang.String" >
+  		select * from  cc_uploadfiles where FILEID = #FILEID#  
+  	</select>
+   
+  <insert id="insert" parameterClass="ccUploadFilesDto" >
+	    insert into CC_UPLOADFILES (FILEID, FILEGROUPID, MODULEID, 
+	      UPLOADFILENAME, UPLOADREALNAME, UPLOADCONTENTTYPE, 
+	      SAVEPATH, CREATETIME, CREATEUSERCODE, 
+	      REMARK)
+	    values (#fileid:VARCHAR#, #filegroupid:VARCHAR#, #moduleid:VARCHAR#, 
+	      #uploadfilename:VARCHAR#, #uploadrealname:VARCHAR#, #uploadcontenttype:VARCHAR#, 
+	      #savepath:VARCHAR#, #createtime:TIMESTAMP#, #createusercode:VARCHAR#, 
+	      #remark:VARCHAR#)
+  	</insert>
+   
+ 
+  	<select id ="selectOne" parameterClass="java.lang.String" resultClass="ccUploadFilesDto">
+  	  select * from  CC_UPLOADFILES  where UPLOADREALNAME =  #FILEID:VARCHAR#
+  	   
+  	</select>
+  
+ 
+ <select id="querylist" parameterClass="ccUploadFilesDto" resultClass="ccUploadFilesDto">
+  	select FILEID, FILEGROUPID, MODULEID, 
+	      UPLOADFILENAME, UPLOADREALNAME, UPLOADCONTENTTYPE, 
+	      SAVEPATH, CREATETIME, CREATEUSERCODE, 
+	      REMARK from CC_UPLOADFILES
+  <dynamic prepend="WHERE">
+   <isNotEmpty prepend="AND" property="fileid">
+    FILEID = #filegroupid#
+   </isNotEmpty>
+   <isNotEmpty prepend="AND" property="filegroupid">
+    FILEGROUPID = #filegroupid#
+   </isNotEmpty>
+  </dynamic>
+ </select>
+ 
+</sqlMap>

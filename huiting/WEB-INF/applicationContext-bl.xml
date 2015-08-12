@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+	
+	<!-- 以下是servicesBean配置 -->
+	<bean id="blXml" class="com.huiting.xml.bl.BLXml" scope="prototype">
+		   <property name="xmlDao">
+		       <ref bean="xmlDao"/>
+		   </property>
+	</bean>
+	
+	<bean id="blActivity" class="com.huiting.xml.activity.bl.BLActivity" scope="prototype">
+		   <property name="activityDao">
+		       <ref bean="activityDao"/>
+		   </property>
+	</bean>
+	<bean id="blActivityShow" class="com.huiting.xml.activityshow.bl.BLActivityShow" scope="prototype">
+		   <property name="activityDao">
+		       <ref bean="activityDao"/>
+		   </property>
+	</bean>
+	<bean id="blAlbum" class="com.huiting.xml.album.bl.BLAlbum" scope="prototype">
+		   <property name="albumDao">
+		       <ref bean="albumDao"/>
+		   </property>
+	</bean>
+	<bean id="blAudioHuibenPublish" class="com.huiting.xml.audiohuibenpublish.bl.BLAudioHuibenPublish" scope="prototype">
+		   <property name="audioDao">
+		       <ref bean="audioDao"/>
+		   </property>
+		   <property name="audioHuibenDao">
+		       <ref bean="audioHuibenDao"/>
+		   </property>
+		   <property name="huibenDao">
+		       <ref bean="huibenDao"/>
+		   </property>
+	</bean>
+	<bean id="blAudioHuibenShow" class="com.huiting.xml.audiohuibenshow.bl.BLAudioHuibenShow" scope="prototype">
+		   <property name="audioHuibenDao">
+		       <ref bean="audioHuibenDao"/>
+		   </property>
+	</bean>
+	<bean id="blAudioPublish" class="com.huiting.xml.audiopublish.bl.BLAudioPublish" scope="prototype">
+		   <property name="audioDao">
+		       <ref bean="audioDao"/>
+		   </property>
+	</bean>
+	<bean id="blAudioShow" class="com.huiting.xml.audioshow.bl.BLAudioShow" scope="prototype">
+		   <property name="audioDao">
+		       <ref bean="audioDao"/>
+		   </property>
+	</bean>
+	<bean id="blChannelDetail" class="com.huiting.xml.channeldetail.bl.BLChannelDetail" scope="prototype">
+		   <property name="channelDao">
+		       <ref bean="channelDao"/>
+		   </property>
+	</bean>
+	<bean id="blChannelListShow" class="com.huiting.xml.channellistshow.bl.BLChannelListShow" scope="prototype">
+		   <property name="channelDao">
+		       <ref bean="channelDao"/>
+		   </property>
+	</bean>
+	<bean id="blChannelSubscribe" class="com.huiting.xml.channelsubscribe.bl.BLChannelSubscribe" scope="prototype">
+		   <property name="subscribeDao">
+		       <ref bean="subscribeDao"/>
+		   </property>
+	</bean>
+	<bean id="blCommenPublish" class="com.huiting.xml.commenpublic.bl.BLCommenPublish" scope="prototype">
+		   <property name="commentDao">
+		       <ref bean="commentDao"/>
+		   </property>
+	</bean>
+	<bean id="blCommentShow" class="com.huiting.xml.commentshow.bl.BLCommentShow" scope="prototype">
+		   <property name="commentDao">
+		       <ref bean="commentDao"/>
+		   </property>
+	</bean>
+	<bean id="blDown" class="com.huiting.xml.down.bl.BLDown" scope="prototype">
+		   <property name="downDao">
+		       <ref bean="downDao"/>
+		   </property>
+	</bean>
+	<bean id="blFirstPage" class="com.huiting.xml.firstpage.bl.BLFirstPage" scope="prototype">
+		    <property name="firstPageDao">
+		       <ref bean="firstPageDao"/>
+		   </property>
+	</bean>
+	<bean id="blFlowerGet" class="com.huiting.xml.flowerget.bl.BLFlowerGet" scope="prototype">
+		   <property name="flowerDao">
+		       <ref bean="flowerDao"/>
+		   </property>
+		   <property name="userSummaryDao">
+		       <ref bean="userSummaryDao"/>
+		   </property>
+		   <property name="programDao">
+		       <ref bean="programDao"/>
+		   </property>
+		   <property name="channelDao">
+		       <ref bean="channelDao"/>
+		   </property>
+		   <property name="picBookDao">
+		       <ref bean="picBookDao"/>
+		   </property>
+	</bean>
+	<bean id="blHuibenShow" class="com.huiting.xml.huibenshow.bl.BLHuibenShow" scope="prototype">
+		   <property name="huibenDao">
+		       <ref bean="huibenDao"/>
+		   </property>
+	</bean>
+	<bean id="blMajorPageShow" class="com.huiting.xml.majorpageshow.bl.BLMajorPageShow" scope="prototype">
+		   <property name="userBaseInfoDao">
+		       <ref bean="userBaseInfoDao"/>
+		   </property>
+		   <property name="userSummaryDao">
+		       <ref bean="userSummaryDao"/>
+		   </property>
+	</bean>
+	<bean id="blMsVerify" class="com.huiting.xml.msverify.bl.BLMsVerify" scope="prototype">
+		   
+	</bean>
+	<bean id="blMyAlbum" class="com.huiting.xml.myalbum.bl.BLMyAlbum" scope="prototype">
+		   <property name="albumDao">
+		       <ref bean="albumDao"/>
+		   </property>
+	</bean>
+	<bean id="blMyDown" class="com.huiting.xml.mydown.bl.BLMyDown" scope="prototype">
+		   <property name="downDao">
+		       <ref bean="downDao"/>
+		   </property>
+	</bean>
+	<bean id="blMyStore" class="com.huiting.xml.mystore.bl.BLMyStore" scope="prototype">
+		   <property name="storeDao">
+		       <ref bean="storeDao"/>
+		   </property>
+	</bean>
+	<bean id="blMySubscribe" class="com.huiting.xml.mysubscribe.bl.BLMySubscribe" scope="prototype">
+		   <property name="subscribeDao">
+		       <ref bean="subscribeDao"/>
+		   </property>
+	</bean>
+	<bean id="blUserConcernedShow" class="com.huiting.xml.myuserconcernedshow.bl.BLUserConcernedShow" scope="prototype">
+		   <property name="userConcernedDao">
+		       <ref bean="userConcernedDao"/>
+		   </property>
+	</bean>
+	<bean id="blPasswordUpdate" class="com.huiting.xml.passwordupdate.bl.BLPasswordUpdate" scope="prototype">
+		   <property name="userBaseInfoDao">
+		       <ref bean="userBaseInfoDao"/>
+		   </property>
+	</bean>
+	<bean id="blPicbookDelete" class="com.huiting.xml.picbookdelete.bl.BLPicbookDelete" scope="prototype">
+		   <property name="picBookDao">
+		       <ref bean="picBookDao"/>
+		   </property>
+	</bean>
+	<bean id="blPicbookPublish" class="com.huiting.xml.picbookpublish.bl.BLPicbookPublish" scope="prototype">
+		   <property name="picBookDao">
+		       <ref bean="picBookDao"/>
+		   </property>
+	</bean>
+	<bean id="blPicbookShow" class="com.huiting.xml.picbookshow.bl.BLPicbookShow" scope="prototype">
+		   <property name="picBookDao">
+		       <ref bean="picBookDao"/>
+		   </property>
+	</bean>
+	<bean id="blPicHuibenPublish" class="com.huiting.xml.pichuibenpublish.bl.BLPicHuibenPublish" scope="prototype">
+		   <property name="picBookDao">
+		       <ref bean="picBookDao"/>
+		   </property>
+		   <property name="picHuibenDao">
+		       <ref bean="picHuibenDao"/>
+		   </property>
+		   <property name="huibenDao">
+		       <ref bean="huibenDao"/>
+		   </property>
+	</bean>
+	<bean id="blPicHuibenShow" class="com.huiting.xml.pichuibenshow.bl.BLPicHuibenShow" scope="prototype">
+		   <property name="picHuibenDao">
+		       <ref bean="picHuibenDao"/>
+		   </property>
+	</bean>
+	<bean id="blProgramList" class="com.huiting.xml.programlist.bl.BLProgramList" scope="prototype">
+		   <property name="programDao">
+		       <ref bean="programDao"/>
+		   </property>
+	</bean>
+	<bean id="blProgramNotify" class="com.huiting.xml.programnotify.bl.BLProgramNotify" scope="prototype">
+		   <property name="programDao">
+		       <ref bean="programDao"/>
+		   </property>
+	</bean>
+	<bean id="blStore" class="com.huiting.xml.store.bl.BLStore" scope="prototype">
+		   <property name="storeDao">
+		       <ref bean="storeDao"/>
+		   </property>
+	</bean>
+	<bean id="blUploadHeadPic" class="com.huiting.xml.uploadheadpic.bl.BLUploadHeadPic" scope="prototype">
+		   <property name="userBaseInfoDao">
+		       <ref bean="userBaseInfoDao"/>
+		   </property>
+	</bean>
+	<bean id="blUserConcerned" class="com.huiting.xml.userconcerned.bl.BLUserConcerned" scope="prototype">
+		   <property name="userConcernedDao">
+		       <ref bean="userConcernedDao"/>
+		   </property>
+	</bean>
+	<bean id="blUserLogin" class="com.huiting.xml.userlogin.bl.BLUserLogin" scope="prototype">
+		   <property name="userBaseInfoDao">
+		       <ref bean="userBaseInfoDao"/>
+		   </property>
+		   <property name="userLoginDao">
+		       <ref bean="userLoginDao"/>
+		   </property>
+	</bean>
+	<bean id="blUserRegist" class="com.huiting.xml.userregist.bl.BLUserRegist" scope="prototype">
+		   <property name="userBaseInfoDao">
+		       <ref bean="userBaseInfoDao"/>
+		   </property>
+	</bean>
+	<bean id="blUserUpdate" class="com.huiting.xml.userupdate.bl.BLUserUpdate" scope="prototype">
+		   <property name="userBaseInfoDao">
+		       <ref bean="userBaseInfoDao"/>
+		   </property>
+	</bean>
+	
+	<bean id="blVerifyLogin" class="com.huiting.xml.verifylogin.bl.BLVerifyLogin" scope="prototype">
+		   <property name="userBaseInfoDao">
+		       <ref bean="userBaseInfoDao"/>
+		   </property>
+		   <property name="userLoginDao">
+		       <ref bean="userLoginDao"/>
+		   </property>
+	</bean>
+	
+    
+</beans>
