@@ -2,63 +2,60 @@ package com.huiting.xml.audiohuibenpublish.bl;
 
 import java.sql.Timestamp;
 
-import com.huiting.cache.SystemCache;
 import com.huiting.xml.bl.BLBaseAction;
-import com.huiting.xml.dao.AudioDao;
-import com.huiting.xml.dao.AudioHuibenDao;
 import com.huiting.xml.dao.HuibenDao;
-import com.huiting.xml.dto.AudioDto;
-import com.huiting.xml.dto.AudioHuibenDto;
+import com.huiting.xml.dao.PicBookDao;
+import com.huiting.xml.dao.PicHuibenDao;
 import com.huiting.xml.dto.HuibenDto;
+import com.huiting.xml.dto.PicBookDto;
+import com.huiting.xml.dto.PicHuibenDto;
 import com.huiting.xml.audiohuibenpublish.bean.RequestBean;
 import com.huiting.xml.audiohuibenpublish.bean.ResponseBean;
 
 
 public class BLAudioHuibenPublish   extends BLBaseAction{
-	AudioDao audioDao ;
-	AudioHuibenDao audioHuibenDao;
+	PicBookDao picBookDao ;
+	PicHuibenDao picHuibenDao;
 	HuibenDao huibenDao;
 	
+	
 	public Object handleXML(RequestBean requestBean){
-		
 		ResponseBean resHuiTingBean = new ResponseBean();
 		String error = "";
-		AudioDto audioDto = new AudioDto();
-		AudioHuibenDto audioHuibenDto = new AudioHuibenDto();
+		PicBookDto picBookDto = new PicBookDto();
+		PicHuibenDto picHuibenDto = new PicHuibenDto();
 		HuibenDto HuibenDto = new HuibenDto();
-		String AudioId="";
-		String AudioURL="";
+		String picbookId="";
+		String picbookURL="";
 		String huibenid="";
 		
 		try{ 
-			audioDto.setUserID(requestBean.getUserID());
-			audioDto.setNickName(requestBean.getNickName());
-			audioDto.setAudioName(requestBean.getAudioName());
-			audioDto.setAudioLength(requestBean.getAudioLength());
-			audioDto.setAudioContent(requestBean.getAudioContent());
-			audioDto.setUploadTime(new Timestamp(System.currentTimeMillis()));
-			audioDto.setAudioStatus("1");
-			audioDto.setFlowerCnt(0);
-			AudioId = genAudioID("A");
-			AudioURL=requestBean.getAudioURL();
-			audioDto.setAudioID(AudioId);
-			audioDto.setAudioURL(AudioURL);
-			audioDto.setBackGoundPic(requestBean.getPicbookURL());
+			picBookDto.setUserID(requestBean.getUserID());
+			picBookDto.setNickName(requestBean.getNickName());
+			picBookDto.setPicbookName(requestBean.getPicbookName());
+			picBookDto.setPicScene(requestBean.getPicScene());
+			picBookDto.setPicbookStatus("1");
+			picBookDto.setUploadTime(new Timestamp(System.currentTimeMillis()));
+			picBookDto.setFlowerCnt(0);
+			picbookId = genPicbookID("PH");
+			picbookURL = requestBean.getPicbookURL();
+			picBookDto.setPicbookID(picbookId);
+			picBookDto.setPicbookURL(picbookURL);
 			
-			if(requestBean.getPicbookUserID().equals(requestBean.getUserID())){
+			if(requestBean.getAudioUserID().equals(requestBean.getUserID())){
 				huibenid =  genHuibenID("H");
 				
 				HuibenDto.setHuibenID(huibenid);
-				HuibenDto.setPicbookID(requestBean.getPicbookID());
+				HuibenDto.setPicbookID(picbookId);
 				HuibenDto.setPicbookName(requestBean.getPicbookName());
-				HuibenDto.setPicbookURL(requestBean.getPicbookURL());
+				HuibenDto.setPicbookURL(picbookURL);
 				HuibenDto.setPicScene(requestBean.getPicScene());
 				HuibenDto.setUserID(requestBean.getUserID());
 				HuibenDto.setNickName(requestBean.getNickName());
 				HuibenDto.setUserPic(requestBean.getUserPic());
-				HuibenDto.setAudioID(AudioId);
+				HuibenDto.setAudioID(requestBean.getAudioID());
+				HuibenDto.setAudioURL(requestBean.getAudioURL());
 				HuibenDto.setAudioName(requestBean.getAudioName());
-				HuibenDto.setAudioURL(AudioURL);
 				HuibenDto.setAudioContent(requestBean.getAudioContent());
 				HuibenDto.setAudioLength(requestBean.getAudioLength());
 				HuibenDto.setFlowerCnt(0);
@@ -70,43 +67,44 @@ public class BLAudioHuibenPublish   extends BLBaseAction{
 				}
 				huibenDao.insert(HuibenDto);
 			}else{
-				huibenid =  genHuibenID("AH");
+				huibenid =  genHuibenID("PH");
 				
-				audioHuibenDto.setHuibenID(huibenid);
-				audioHuibenDto.setPicbookID(requestBean.getPicbookID());
-				audioHuibenDto.setPicbookName(requestBean.getPicbookName());
-				audioHuibenDto.setPicbookURL(requestBean.getPicbookURL());
-				audioHuibenDto.setPicScene(requestBean.getPicScene());
-				audioHuibenDto.setUserID(requestBean.getUserID());
-				audioHuibenDto.setNickName(requestBean.getNickName());
-				audioHuibenDto.setUserPic(requestBean.getUserPic());
-				audioHuibenDto.setAudioID(AudioId);
-				audioHuibenDto.setAudioName(requestBean.getAudioName());
-				audioHuibenDto.setAudioContent(requestBean.getAudioContent());
-				audioHuibenDto.setAudioLength(requestBean.getAudioLength());
-				audioHuibenDto.setAudioURL(AudioURL);
-				audioHuibenDto.setFlowerCnt(0);
-				audioHuibenDto.setStatus("1");
-				audioHuibenDto.setCommentCnt(0);
-				audioHuibenDto.setCreateTime(new Timestamp(System.currentTimeMillis()));
-				if(audioHuibenDao==null){
-					audioHuibenDao = (AudioHuibenDao)com.huiting.common.SpringBeanFactory.lookup("audioHuibenDao");
+				picHuibenDto.setHuibenID(huibenid);
+				picHuibenDto.setPicbookID(picbookId);
+				picHuibenDto.setPicbookName(requestBean.getPicbookName());
+				picHuibenDto.setPicbookURL(picbookURL);
+				picHuibenDto.setPicScene(requestBean.getPicScene());
+				picHuibenDto.setUserID(requestBean.getUserID());
+				picHuibenDto.setNickName(requestBean.getNickName());
+				picHuibenDto.setUserPic(requestBean.getUserPic());
+				picHuibenDto.setAudioID(requestBean.getAudioID());
+				picHuibenDto.setAudioName(requestBean.getAudioName());
+				picHuibenDto.setAudioURL(requestBean.getAudioURL());
+				picHuibenDto.setAudioContent(requestBean.getAudioContent());
+				picHuibenDto.setAudioLength(requestBean.getAudioLength());
+				picHuibenDto.setFlowerCnt(0);
+				picHuibenDto.setStatus("1");
+				picHuibenDto.setCommentCnt(0);
+				picHuibenDto.setCreateTime(new Timestamp(System.currentTimeMillis()));
+				if(picHuibenDao==null){
+					picHuibenDao = (PicHuibenDao)com.huiting.common.SpringBeanFactory.lookup("picHuibenDao");
 				}
-				audioHuibenDao.insert(audioHuibenDto);
+				picHuibenDao.insert(picHuibenDto);
 			}
 			
 			
 			
-			if(audioDao==null){
-				audioDao = (AudioDao)com.huiting.common.SpringBeanFactory.lookup("audioDao");
+			if(picBookDao==null){
+				picBookDao = (PicBookDao)com.huiting.common.SpringBeanFactory.lookup("picBookDao");
 			}
 			
-			audioDao.insert(audioDto);
+			picBookDao.insert(picBookDto);
 			
 			
 			resHuiTingBean.setUserID(requestBean.getUserID());
-			resHuiTingBean.setAudioId(AudioId);
-			resHuiTingBean.setAudioURL(AudioURL);
+			resHuiTingBean.setHuibenID(huibenid);
+			resHuiTingBean.setPicbookId(picbookId);
+			resHuiTingBean.setPicbookURL(picbookURL);
 			genResponseHeadXml(resHuiTingBean,requestBean,error);
 		}catch(Exception e ){
 			e.printStackTrace();
@@ -116,21 +114,25 @@ public class BLAudioHuibenPublish   extends BLBaseAction{
 		return resHuiTingBean;
 	}
 
-	public AudioDao getAudioDao() {
-		return audioDao;
+	public PicBookDao getPicBookDao() {
+		return picBookDao;
 	}
 
-	public void setAudioDao(AudioDao audioDao) {
-		this.audioDao = audioDao;
+
+	public void setPicBookDao(PicBookDao picBookDao) {
+		this.picBookDao = picBookDao;
 	}
 
-	public AudioHuibenDao getAudioHuibenDao() {
-		return audioHuibenDao;
+
+	public PicHuibenDao getPicHuibenDao() {
+		return picHuibenDao;
 	}
 
-	public void setAudioHuibenDao(AudioHuibenDao audioHuibenDao) {
-		this.audioHuibenDao = audioHuibenDao;
+
+	public void setPicHuibenDao(PicHuibenDao picHuibenDao) {
+		this.picHuibenDao = picHuibenDao;
 	}
+
 
 	public HuibenDao getHuibenDao() {
 		return huibenDao;

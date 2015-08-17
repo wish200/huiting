@@ -4,7 +4,7 @@ import com.huiting.xml.bean.ReqHeadBean;
 
 public class RequestBean extends ReqHeadBean{
 	
-	private String PicbookUserID ="";
+	private String AudioUserID ="";
 	private String PicbookID ="";
 	private String PicbookName ="";
 	private String PicbookURL ="";
@@ -18,11 +18,12 @@ public class RequestBean extends ReqHeadBean{
 	private String AudioLength ="";
 	private String AudioContent ="";
 	private String AudioURL ="";
-	public String getPicbookUserID() {
-		return PicbookUserID;
+	
+	public String getAudioUserID() {
+		return AudioUserID;
 	}
-	public void setPicbookUserID(String picbookUserID) {
-		PicbookUserID = picbookUserID;
+	public void setAudioUserID(String audioUserID) {
+		AudioUserID = audioUserID;
 	}
 	public String getPicbookID() {
 		return PicbookID;

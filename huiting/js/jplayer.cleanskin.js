@@ -9,6 +9,7 @@
 		
 		try {
 			var settings  =  $.parseJSON($(this).find('.playerData').text());
+			
 		} catch (err) {
 			console.log('JSON parse ERROR, fall back to JS!');
 			var settings = extras;
@@ -35,13 +36,13 @@
 </div>\
 <div class="rightblock">\
 <div class="volumeBar">\
-<div class="currentVolume"><div class="curvol"></div></div>\
+<div class="currentVolume"><div class="curvol" style="background-color:red;"></div></div>\
 </div>\
-<div class="volumeText">Volume: 50</div>\
+<div class="volumeText"><span  style="font-size:12px" >vol:	50</span></div>\
 <a href="#" tabindex="1" class="fullScreen smooth noload"></a>\
 <a href="#" tabindex="1" class="fullScreenOFF smooth noload"></a>\
 </div>');
-		
+
 		if ($(this).hasClass('audioPlayer')) { 
 			$(this).find('.fullScreen').remove();
 			$(this).find('.fullScreenOFF').remove();
@@ -60,7 +61,6 @@
 		formats = supplied.join(', ');
 		
 		var options = {
-			
 			ready: function () {
 				$(this).jPlayer("setMedia", settings.media);
 				if (settings.autoplay != null) {
@@ -69,7 +69,7 @@
 			},
 			
 			// Extra Settings
-			swfPath: "./img/Jplayer.swf",
+			swfPath: "./js/Jplayer.swf",
 			supplied: formats,
 			solution: 'html, flash',
 			volume: 0.5,
@@ -135,7 +135,6 @@
 			
 			
 		};
-		
 		// Create the volume slider control
 		$(playerGUI + ' .currentVolume').slider({
 			range: [0, 1],
@@ -146,14 +145,13 @@
 				var value = $(this).val();
 				$(mainPlayer).jPlayer("option", "muted", false);
 				$(mainPlayer).jPlayer("option", "volume", value);
-				$(playerGUI + ' .volumeText').html('Volume: ' + (value * 100).toFixed(0) + '');
+				$(playerGUI + ' .volumeText').html('vol: ' + (value * 100).toFixed(0) + '');
 			}
 		});
-		
 		$(playerGUI + ' .seekBar').slider({
 			range: [0,100],
 			step: 0.01,
-			start: 0,
+			start: 0.1,
 			handles: 1,
 			slide: function() {
 				var value = $(this).val();
@@ -161,7 +159,6 @@
 			}
 			
 		});
-		
 		// Initialize Player
 		$.extend(options, extras);
 		$(mainPlayer).jPlayer(options);

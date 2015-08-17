@@ -4,8 +4,8 @@ import com.huiting.xml.bean.ResHeadBean;
 
 public class ResponseBean extends ResHeadBean{
 	private String UserID = "";
-	private String PicbookId = "";
-	private String PicbookURL = "";
+	private String AudioId = "";
+	private String AudioURL = "";
 	private String HuibenID = "";
 	public String getUserID() {
 		return UserID;
@@ -13,17 +13,17 @@ public class ResponseBean extends ResHeadBean{
 	public void setUserID(String userID) {
 		UserID = userID;
 	}
-	public String getPicbookId() {
-		return PicbookId;
+	public String getAudioId() {
+		return AudioId;
 	}
-	public void setPicbookId(String picbookId) {
-		PicbookId = picbookId;
+	public void setAudioId(String audioId) {
+		AudioId = audioId;
 	}
-	public String getPicbookURL() {
-		return PicbookURL;
+	public String getAudioURL() {
+		return AudioURL;
 	}
-	public void setPicbookURL(String picbookURL) {
-		PicbookURL = picbookURL;
+	public void setAudioURL(String audioURL) {
+		AudioURL = audioURL;
 	}
 	public String getHuibenID() {
 		return HuibenID;

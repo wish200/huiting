@@ -63,14 +63,14 @@
   </listener>
   
    <servlet>
-    <servlet-name>FileServlet</servlet-name>
-    <servlet-class>com.huiting.servlet.FileServlet</servlet-class>
+    <servlet-name>m</servlet-name>
+    <servlet-class>com.huiting.servlet.ModelServlet</servlet-class>
     <load-on-startup>0</load-on-startup>    
   </servlet>
 
   <servlet-mapping>
-    <servlet-name>FileServlet</servlet-name>
-    <url-pattern>/FileServlet</url-pattern>
+    <servlet-name>m</servlet-name>
+    <url-pattern>/m</url-pattern>
   </servlet-mapping>
   
   

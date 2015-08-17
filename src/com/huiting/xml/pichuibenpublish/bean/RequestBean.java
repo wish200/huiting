@@ -7,6 +7,7 @@ public class RequestBean extends ReqHeadBean{
 	private String PicbookID ="";
 	private String PicbookName ="";
 	private String PicScene ="";
+	private String PicbookUserID ="";
 	private String UserID ="";
 	private String NickName ="";
 	private String UserPic ="";
@@ -14,7 +15,7 @@ public class RequestBean extends ReqHeadBean{
 	private String AudioID ="";
 	private String AudioName ="";
 	private String AudioURL ="";
-	private String AudioUserID ="";
+	
 	private String AudioLength ="";
 	private String AudioContent ="";
 	private String PicbookURL ="";
@@ -72,11 +73,12 @@ public class RequestBean extends ReqHeadBean{
 	public void setAudioURL(String audioURL) {
 		AudioURL = audioURL;
 	}
-	public String getAudioUserID() {
-		return AudioUserID;
+	
+	public String getPicbookUserID() {
+		return PicbookUserID;
 	}
-	public void setAudioUserID(String audioUserID) {
-		AudioUserID = audioUserID;
+	public void setPicbookUserID(String picbookUserID) {
+		PicbookUserID = picbookUserID;
 	}
 	public String getAudioLength() {
 		return AudioLength;

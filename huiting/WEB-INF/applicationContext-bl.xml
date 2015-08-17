@@ -9,6 +9,20 @@
 		       <ref bean="xmlDao"/>
 		   </property>
 	</bean>
+	<bean id="blModel" class="com.huiting.xml.bl.BLModel" scope="prototype">
+		  <property name="audioHuibenDao">
+		       <ref bean="audioHuibenDao"/>
+		   </property>
+		   <property name="picHuibenDao">
+		       <ref bean="picHuibenDao"/>
+		   </property>
+		   <property name="huibenDao">
+		       <ref bean="huibenDao"/>
+		   </property>
+		   <property name="programDao">
+		       <ref bean="programDao"/>
+		   </property>
+	</bean>
 	
 	<bean id="blActivity" class="com.huiting.xml.activity.bl.BLActivity" scope="prototype">
 		   <property name="activityDao">
