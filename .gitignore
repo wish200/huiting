@@ -48,4 +48,4 @@ Temporary Items
 .mymetadata
 .project
 *.bak
-./log/*
+./logs/*
